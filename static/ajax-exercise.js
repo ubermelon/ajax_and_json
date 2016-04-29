@@ -2,14 +2,12 @@
 
 
 // PART 1: SHOW A FORTUNE
-
+// event handler for generating random fortune
 function showFortune(evt) {
 
     // TODO: get the fortune and show it in the #fortune-text div
-
     var fortune = evt;
     $('#fortune-text').html(fortune);
-    console.log(fortune);
 }
 
 function getFortune() {
@@ -27,11 +25,18 @@ $('#get-fortune-button').on('click', getFortune);
 function showWeather(evt) {
     evt.preventDefault();
 
-    var url = "/weather?zipcode=" + $("#zipcode-field").val();
+    var url = "/weather.json?zipcode=" + $("#zipcode-field").val();
 
     // TODO: request weather with that URL and show the forecast in #weather-info
+    $.get("/weather.json?zipcode=", $("#zipcode-field").val());
+ 	//    if ($("#zipcode-field").val() in WEATHER){
+	// 	console.log("The weather for " + WEATHER);
+	// }
+	// else {
+	// 	console.log("The weather for " + DEFAULT_WEATHER);
+	// }
+    $("#weather-form").html(evt);
 }
-
 $("#weather-form").on('submit', showWeather);
 
 
